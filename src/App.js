@@ -1,11 +1,13 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Stats from "./components/Stats";
 
-function App() {
+export default function App() {
   return (
-    <div className="m-3">
-     <center>HELLO WORLD</center>
-    </div>
+    <React.Fragment>
+      <Switch>
+        <Route path="/" exact component={Stats} />
+      </Switch>
+    </React.Fragment>
   );
 }
-
-export default App;
