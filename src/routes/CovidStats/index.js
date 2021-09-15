@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { CovidServices } from "../../Logic/covidService";
+import { useHistory } from "react-router";
+import Services from "../../Service";
 
-export default function Stats() {
+export default function CovidStatsScreen() {
+  const history = useHistory();
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [sortsType, setSortType] = useState("AscendingState");
@@ -15,7 +17,7 @@ export default function Stats() {
 
   const covid19DataList = async () => {
     try {
-      await CovidServices.covid19Data()
+      await Services.covid19Data()
         .then((data) => {
           setData(data.data.regional);
         })
@@ -108,7 +110,14 @@ export default function Stats() {
     <div className="m-3">
       <div className="col-md-12">
         <div className="row">
-          <div className="col-sm-8"></div>
+          <div className="col-sm-8">
+            <i
+              className="fa fa-arrow-right text-white border-round bg-secondary p-2"
+              onClick={() => history.push("/indianStatesMap")}
+            >
+              Next
+            </i>
+          </div>
           <div className="col-sm-4">
             <div className="row">
               <div className="col-sm-4 mb-3"></div>
